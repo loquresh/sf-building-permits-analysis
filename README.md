@@ -30,7 +30,9 @@ Permit filings grew steadily from 1980 (259 permits) through a peak in 2019 (42,
 
 *Note: Analysis excludes pre-1980 records (sparse and likely incomplete/unreliable) and 2026 (partial year, data as of September 10, 2026).*
 
-[Insert Chart Here]
+![Permit volume by year](visuals/sf_permit_volume_by_year.png)
+
+🔗 [View interactive version on Tableau Public](https://public.tableau.com/app/profile/leena.qureshi/viz/SFBuildingPermits_17894082363590/SFPermitVolumebyYear#1)
 
 ## Tools
 SQL (PostgreSQL), TablePlus, Tableau
