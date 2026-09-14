@@ -15,5 +15,22 @@ This breaks down into a few sub-questions:
 ## Data Source
 [SF Building Permits](https://data.sf.gov/Housing-and-Buildings/Building-Permits/i98e-djp9) — San Francisco's Open Data Portal (DataSF)
 
+## Data Quality Notes
+While exploring the dataset, a few real-world data quality issues were identified and documented:
+
+- **Date fields imported as text**: The "Filed Date," "Issued Date," and "Completed Date" columns were originally stored as text rather than proper date/timestamp values. New cleaned columns (`filed_date_clean`, `issued_date_clean`, `completed_date_clean`) were created to enable accurate date calculations.
+- **Illogical date ordering in older records**: Approximately 1% of rows (2,292 out of ~200k) have an Issued Date earlier than the Filed Date. This issue is concentrated in older records (1980s-90s), likely reflecting inconsistencies from historical data entry or digitization. These rows are excluded from approval-time calculations to avoid skewing results.
+- **Blank vs. null values**: Empty date fields were sometimes stored as empty strings rather than true NULL values, requiring explicit checks for both.
+- **Excluded data**: Intentionally excluded sparse and inconsistent pre-1980 data as well as incomplete 2026 data in analysis.
+
+## Findings
+
+### 1. Permit Volume Over Time
+Permit filings grew steadily from 1980 (259 permits) through a peak in 2019 (42,681 permits), reflecting several decades of increasing development activity in San Francisco. Filings dropped sharply in 2020 (24,925, a ~42% decline from 2019), likely reflecting COVID-19 disruptions to construction and permitting processes. Volume has remained in a lower, relatively stable range (~24,000-26,000/year) from 2020-2025, well below pre-pandemic levels.
+
+*Note: Analysis excludes pre-1980 records (sparse and likely incomplete/unreliable) and 2026 (partial year, data as of September 10, 2026).*
+
+[Insert Chart Here]
+
 ## Tools
-SQL (PostgreSQL), TablePlus
+SQL (PostgreSQL), TablePlus, Tableau
