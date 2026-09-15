@@ -1,0 +1,43 @@
+-- Question: Which permit types or neighborhoods have the slowest approval times 
+-- Permit type 
+
+SELECT 
+	"Permit Type Definition",
+	COUNT(*) AS permit_count,
+	AVG(EXTRACT(EPOCH FROM(issued_date_clean - filed_date_clean)) / 86400) AS avg_days_to_issue
+FROM "Building_Permits_20260911"
+WHERE filed_date_clean IS NOT NULL
+	AND issued_date_clean IS NOT NULL
+	AND issued_date_clean >= filed_date_clean
+GROUP BY "Permit Type Definition"
+ORDER BY avg_days_to_issue DESC;
+
+-- Neighborhood 
+
+SELECT
+	neighborhoods_analysis_boundaries,
+	COUNT(*) AS permit_count,
+	AVG(EXTRACT (EPOCH FROM (issued_date_clean - filed_date_clean)) / 86400) AS avg_days_to_issue
+FROM "Building_Permits_20260911"
+WHERE filed_date_clean IS NOT NULL
+	AND issued_date_clean IS NOT NULL
+	AND issued_date_clean >= filed_date_clean
+	AND neighborhoods_analysis_boundaries IS NOT NULL 
+	AND neighborhoods_analysis_boundaries != ''
+GROUP BY neighborhoods_analysis_boundaries
+ORDER BY avg_days_to_issue DESC;
+
+-- By zipcode for plotting 
+
+SELECT 
+    "Zipcode",
+    COUNT(*) AS permit_count,
+    AVG(EXTRACT(EPOCH FROM (issued_date_clean - filed_date_clean)) / 86400) AS avg_days_to_issue
+FROM "Building_Permits_20260911"
+WHERE filed_date_clean IS NOT NULL
+    AND issued_date_clean IS NOT NULL
+    AND issued_date_clean >= filed_date_clean
+    AND "Zipcode" IS NOT NULL
+    AND "Zipcode" != ''
+GROUP BY "Zipcode"
+ORDER BY avg_days_to_issue DESC;

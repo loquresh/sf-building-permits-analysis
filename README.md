@@ -35,13 +35,25 @@ Permit filings grew steadily from 1980 (259 permits) through a peak in 2019 (42,
 🔗 [View interactive version on Tableau Public](https://public.tableau.com/app/profile/leena.qureshi/viz/SFBuildingPermits_17894082363590/SFPermitVolumebyYear#1)
 
 ### 2. Permit Approval Time Over Time
-Average approval time (days from filed to issued) has fluctuated significantly over the dataset's history, ranging from a low of ~18 days (2008) to a high of ~67 days (2020). Excluding the 1980 outlier (discussed below), approval times generally ran 50-60+ days through the late 1980s, dropped to their lowest point in the late 2000s/early 2010s, then climbed again from 2013 onward, peaking in 2020. Notably, this 2020 peak occurred even though permit *volume* dropped sharply that same year (see Finding 1), suggesting slower processing wasn't simply a matter of higher demand. Approval times have since declined, returning to ~24-25 days by 2024-2025.
+Average approval time (days from filed to issued) has changed a lot over the years, from around 18 days in 2008 to 67 days in 2020. Excluding 1980 (explained below), approval times were around 50-60 days through the late 1980s, dropped to their lowest point in the late 2000s and early 2010s, then went back up starting around 2013, peaking in 2020. It's worth noting that 2020's peak happened even though permit volume dropped that year (see Finding 1), so it wasn't simply a matter of more permits taking longer to process. Approval times have gone back down since, landing around 24-25 days in 2024-2025.
 
-*Note: Excludes rows where Issued Date is earlier than Filed Date (~1% of records, concentrated in older data — see Data Quality Notes). 1980 shows an unusually high average (401 days), likely due to the small number of permits filed that year (259, versus 2,000+ in surrounding years) — a few slow outliers have an outsized effect on the average when the sample is that small.*
+*Note: Rows where the issued date came before the filed date (about 1% of records, mostly older data, see Data Quality Notes) were excluded. 1980's average (401 days) is unusually high, likely because only 259 permits were filed that year compared to 2,000+ in nearby years, so a few slow permits skewed the average.*
 
 ![Permit approval time by year](visuals/sf_permit_approval_time.png)
 
 🔗 [View interactive version on Tableau Public](https://public.tableau.com/app/profile/leena.qureshi/viz/SFBuildingPermitApprovalTime1980-2025/SFPermitApprovalTime#1)
+
+### 3. Approval Time by Permit Type and Neighborhood
+
+**By permit type:** New construction and demolition permits take the longest to get approved, averaging 300-490 days. Additions, alterations, and repairs average about 116 days. Simpler permit types like signs, wall paintings, and OTC (over the counter) alterations move much faster, averaging under 45 days.
+
+**By neighborhood:** Treasure Island (113 days) and Bayview Hunters Point (82 days) have the slowest average approval times. Lincoln Park (17 days), Sunset/Parkside (27 days), and West of Twin Peaks (27 days) are among the fastest. Most neighborhoods fall somewhere between 30-45 days.
+
+*Note: One row had a blank neighborhood value (401 permits) and was excluded from this comparison.*
+
+![Permit approval time by year](sf_approval_time_zip_code.png)
+
+🔗 [View interactive version on Tableau Public](https://public.tableau.com/app/profile/leena.qureshi/viz/SFBuildingPermitApprovalTimebyZipcode1980-2025/SFPermitApprovalTimebyZipcode#1)
 
 ## Tools
 SQL (PostgreSQL), TablePlus, Tableau
