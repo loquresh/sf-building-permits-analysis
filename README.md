@@ -51,7 +51,7 @@ Average approval time (days from filed to issued) has changed a lot over the yea
 
 *Note: One row had a blank neighborhood value (401 permits) and was excluded from this comparison.*
 
-![Permit approval time by year](sf_approval_time_zip_code.png)
+![Permit approval time by year](visuals/sf_approval_time_zip_code.png)
 
 🔗 [View interactive version on Tableau Public](https://public.tableau.com/app/profile/leena.qureshi/viz/SFBuildingPermitApprovalTimebyZipcode1980-2025/SFPermitApprovalTimebyZipcode#1)
 
